@@ -1,2 +1,2 @@
 [webserver]
-172.31.18.129 ansible_user=ec2-user
+10.182.0.7 ansible_user=ubuntu

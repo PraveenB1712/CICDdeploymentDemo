@@ -3,11 +3,11 @@
   become: true
   become_user: root
   vars:
-   repo_path: https://github.com/Sonal0409/AnsibleDockerdemo.git
+   repo_path: https://github.com/PraveenB1712/CICDdeploymentDemo.git
    dest_path: /tmp/gitrepo
   tasks:
   - name: Install multiple packages on host server
-    yum: name={{item}} state=present
+    apt: name={{item}} state=present
     loop:
     - git
     - docker
@@ -16,7 +16,7 @@
   - name: Clone the repo to HostServer
     git: repo={{repo_path}} dest={{dest_path}}
   - name: Copy the build in the destination
-    copy: src=/var/lib/jenkins/workspace/CICDPipelineDemo1/target/addressbook.war dest={{dest_path}}
+    copy: src=/var/lib/jenkins/workspace/1.ansiblepipelinejob/target/addressbook.war dest={{dest_path}}
   - name: Build Dockerfile
     command: chdir={{dest_path}} docker build -t ansible23 .
   - name: Run the image to deploy app in container
